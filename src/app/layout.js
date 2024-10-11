@@ -1,18 +1,18 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-import TransitionProvider from "@/components/transitionProvider";
+import { Inter } from 'next/font/google';
+import './globals.css';
+import TransitionProvider from '@/components/transitionProvider';
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Lama Dev Portfolio App",
-  description: "The best animated portfolio page",
+  title: 'Lama Dev Portfolio App',
+  description: 'The best animated portfolio page',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="bg-black pb-6">
         <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>
