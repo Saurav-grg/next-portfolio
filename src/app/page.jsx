@@ -14,7 +14,7 @@ const Homepage = () => {
             <span className="text-xl">Full Stack Developer</span>
             <h1 className="mb-6">
               Hello I'm <br />
-              <span className="text-accent">Saurav Gurung</span>
+              <span className="text-accent/80">Saurav Gurung</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
               I excel at crafting digital experiences and I am proficient in
@@ -22,7 +22,9 @@ const Homepage = () => {
             </p>
             {/* buttons and socials */}
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 ">
-              <button className="">Download CV</button>
+              <button className="border border-accent/80 p-1 px-4 rounded-full text-accent hover:bg-accent/80 hover:text-white transition-all duration-300">
+                Download CV
+              </button>
               <div className="mb-8 lg:mb-0">
                 <Socials />
               </div>
@@ -35,7 +37,7 @@ const Homepage = () => {
         </div>
       </div>
       {/* stats */}
-      <Stats />
+      {/* <Stats /> */}
     </div>
   );
 };

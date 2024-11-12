@@ -1,119 +1,157 @@
-"use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { useRef } from "react";
+'use client';
 
-const items = [
+// import { useState } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+// import { IoLayersOutline } from 'react-icons/io5';
+
+const projects = [
   {
-    id: 1,
-    color: "from-red-300 to-blue-300",
-    title: "React Commerce",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-    img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    link: "https://lama.dev",
+    title: 'Blog CRUD Application',
+    description:
+      'A dynamic blogging platform built with the MERN stack, enabling user to create, edit, and delete blog posts seamlessly. With Firebase-hosted images and rich text styling powered by ReactQuill, the app provides an engaging writing experience.',
+    image: '/imgdem.jpg',
+    tags: ['React.js', 'MongoDB', 'Express.js', 'Tailwind CSS', 'Firebase'],
+    liveUrl: 'https://zenith-quest.vercel.app',
+    githubUrl: 'https://github.com/Saurav-grg/Blog-app-MERN',
+    featured: true,
   },
   {
-    id: 2,
-    color: "from-blue-300 to-violet-300",
-    title: "Next.js Medium Blog",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-    img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    link: "https://lama.dev",
+    title: 'Recipe Search/Discover ',
+    description:
+      'A recipe discovery app leveraging a public recipe database API to help users find meal ideas by filtering recipes based on dietary needs and health considerations. The app includes a search bar with multiselect filtering options for smooth user experience and quick access to tailored recipes.',
+    image: '/imgdem.jpg',
+    tags: ['React js', 'Edamam API', 'Tailwind CSS'],
+    liveUrl: 'https://picky-eater.onrender.com',
+    githubUrl: 'https://github.com/Saurav-grg/Recipe-APP-Reactjs',
+    featured: true,
   },
-  {
-    id: 3,
-    color: "from-violet-300 to-purple-300",
-    title: "Vanilla Book App",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-    img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    link: "https://lama.dev",
-  },
-  {
-    id: 4,
-    color: "from-purple-300 to-red-300",
-    title: "Spotify Music App",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "https://lama.dev",
-  },
+  // {
+  //   title: 'Task Management Dashboard',
+  //   description:
+  //     'A collaborative task management platform with real-time updates and team collaboration features. Includes Kanban boards, time tracking, project analytics, and automated workflow capabilities. Perfect for remote teams and agile project management.',
+  //   image: '/imgdem.jpg',
+  //   tags: ['React js', 'Edamam API', 'Tailwind CSS'],
+  //   liveUrl: 'https://example.com',
+  //   githubUrl: 'https://github.com',
+  //   featured: false,
+  // },
 ];
 
-const PortfolioPage = () => {
-  const ref = useRef();
+export default function ProjectsPage() {
+  // const [filter, setFilter] = (useState < 'all') | ('featured' > 'all');
 
-  const { scrollYProgress } = useScroll({ target: ref });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  // const filteredProjects =
+  //   filter === 'all' ? projects : projects.filter((p) => p.featured);
 
   return (
-    <motion.div
-      className="h-full"
-      initial={{ y: "-200vh" }}
-      animate={{ y: "0%" }}
-      transition={{ duration: 1 }}
-    >
-      <div className="h-[600vh] relative" ref={ref}>
-        <div className="w-screen h-[calc(100vh-6rem)] flex items-center justify-center text-8xl text-center">
-          My Works
+    <div className="container mx-auto px-4 py-16 max-w-7xl">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-16"
+      >
+        <div className="flex flex-col items-center text-center space-y-4">
+          <h1 className="text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-accent/40 to-accent/90">
+            My Projects
+          </h1>
+          <p className="text-muted-foreground max-w-[600px] text-lg">
+            A showcase of my best work, side projects, and open source
+            contributions.
+          </p>
+          {/* <div className="flex gap-4">
+            <button onClick={() => setFilter('all')} className="px-6">
+              All Projects
+            </button>
+            <button onClick={() => setFilter('featured')} className="px-6">
+              Featured
+            </button>
+          </div> */}
         </div>
-        <div className="sticky top-0 flex h-screen gap-4 items-center overflow-hidden">
-          <motion.div style={{ x }} className="flex">
-            <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-purple-300 to-red-300" />
-            {items.map((item) => (
-              <div
-                className={`h-screen w-screen flex items-center justify-center bg-gradient-to-r ${item.color}`}
-                key={item.id}
-              >
-                <div className="flex flex-col gap-8 text-white">
-                  <h1 className="text-xl font-bold md:text-4xl lg:text-6xl xl:text-8xl">
-                    {item.title}
-                  </h1>
-                  <div className="relative w-80 h-56 md:w-96 md:h-64 lg:w-[500px] lg:h-[350px] xl:w-[600px] xl:h-[420px]">
-                    <Image src={item.img} alt="" fill />
+
+        <div className="space-y-32 lg:space-y-64">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`group flex flex-col gap-8 lg:items-start items-center ${
+                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+              }`}
+            >
+              <div className="relative aspect-[16/9] w-full lg:w-3/5 rounded-xl overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute bottom-4 left-8 flex items-center gap-4">
+                    <button
+                      className="border z-10 border-accent rounded-full p-2 hover:text-accent hover:border-accent/80 "
+                      asChild
+                    >
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaExternalLinkAlt className="" />
+                      </a>
+                    </button>
+                    <button
+                      className="border z-10  border-accent rounded-full p-2 hover:text-accent hover:border-accent/80"
+                      asChild
+                    >
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaGithub />
+                      </a>
+                    </button>
                   </div>
-                  <p className="w-80 md:w96 lg:w-[500px] lg:text-lg xl:w-[600px]">
-                    {item.desc}
-                  </p>
-                  <Link href={item.link} className="flex justify-end">
-                    <button className="p-2 text-sm md:p-4 md:text-md lg:p-8 lg:text-lg bg-white text-gray-600 font-semibold m-4 rounded">See Demo</button>
-                  </Link>
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/30 h-16"></div>
                 </div>
               </div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
-      <div className="w-screen h-screen flex flex-col gap-16 items-center justify-center text-center">
-        <h1 className="text-8xl">Do you have a project?</h1>
-        <div className="relative">
-          <motion.svg
-            animate={{ rotate: 360 }}
-            transition={{ duration: 8, ease: "linear", repeat: Infinity }}
-            viewBox="0 0 300 300"
-            className="w-64 h-64 md:w-[500px] md:h-[500px] "
-          >
-            <defs>
-              <path
-                id="circlePath"
-                d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "
-              />
-            </defs>
-            <text fill="#000">
-              <textPath xlinkHref="#circlePath" className="text-xl">
-                Front-end Developer and UI Designer
-              </textPath>
-            </text>
-          </motion.svg>
-          <Link
-            href="/contact"
-            className="w-16 h-16 md:w-28 md:h-28 absolute top-0 left-0 right-0 bottom-0 m-auto bg-black text-white rounded-full flex items-center justify-center"
-          >
-            Hire Me
-          </Link>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
-export default PortfolioPage;
+              <div className="space-y-6 lg:w-2/5">
+                <div className="flex items-center gap-4">
+                  <h2 className="text-3xl font-bold tracking-tight">
+                    {project.title}
+                  </h2>
+                  {/* {project.featured && (
+                    <div className="flex items-center gap-1 text-sm font-medium text-muted-foreground">
+                      <IoLayersOutline className="h-4 w-4" />
+                      Featured Project
+                    </div>
+                  )} */}
+                </div>
+
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 outline outline-1 outline-accent/50 hover:outline-accent cursor-pointer rounded text-sm font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
