@@ -1,44 +1,26 @@
 'use client';
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-
+import { useState } from 'react';
+import { sendEmail } from '../actions';
+import { useFormStatus } from 'react-dom';
 const ContactPage = () => {
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
-  const text = 'Say Hello';
+  const { pending } = useFormStatus();
+  const [formState, setFormState] = useState({ success: false, error: null });
 
-  const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setError(false);
-    setSuccess(false);
-
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        form.current,
-        process.env.NEXT_PUBLIC_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setSuccess(true);
-          form.current.reset();
-        },
-        () => {
-          setError(true);
-        }
-      );
-  };
+  const text = 'Say Hello!';
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const result = await sendEmail(formData);
+    setFormState(result);
+  }
 
   return (
     <motion.div
       className="h-full"
-      initial={{ y: '-200vh' }}
-      animate={{ y: '0%' }}
-      transition={{ duration: 1 }}
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="h-full flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48">
         {/* TEXT CONTAINER */}
@@ -63,35 +45,36 @@ const ContactPage = () => {
         </div>
         {/* FORM CONTAINER */}
         <form
-          onSubmit={sendEmail}
-          ref={form}
+          onSubmit={handleSubmit}
           className="h-1/2 lg:h-full lg:w-1/2 border border-accent/40 text-accent rounded-xl text-xl flex flex-col gap-8 justify-center p-24"
         >
           <span>Dear Saurav,</span>
           <textarea
-            rows={6}
-            className="bg-white/20 border-b-2 border-b-accent p-2 outline-none resize-none"
-            name="user_message"
+            rows={4}
+            className="bg-white/20 border-b-2 border-b-accent p-2 outline-none resize-none "
+            name="message"
+            id="message"
           />
           <span>My mail address is:</span>
           <input
-            name="user_email"
-            type="text"
+            name="email"
+            id="email"
+            type="email"
             className="bg-white/20 p-2 border-b-2 border-b-accent outline-none"
           />
           <span>Regards</span>
           <button className="bg-accent/40 rounded font-semibold text-accent p-4">
-            Send
+            {pending ? 'Sending...' : 'Send Message'}
           </button>
-          {success && (
-            <span className="text-green-600 font-semibold">
-              Your message has been sent successfully!
-            </span>
+          {formState.success && (
+            <p className="text-green-600" role="status">
+              Message sent successfully!
+            </p>
           )}
-          {error && (
-            <span className="text-red-600 font-semibold">
-              Something went wrong!
-            </span>
+          {formState.error && (
+            <p className="text-red-600" role="alert">
+              {formState.error}
+            </p>
           )}
         </form>
       </div>

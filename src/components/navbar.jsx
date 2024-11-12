@@ -1,10 +1,10 @@
 'use client';
-
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import NavLink from './navLink';
+// import NavLink from './navLink';
+
 import { motion } from 'framer-motion';
+import PrefetchingLink from './prefetch';
 
 const links = [
   { url: '/', title: 'Home' },
@@ -21,8 +21,8 @@ const Navbar = () => {
       rotate: 0,
     },
     opened: {
-      rotate: 45,
-      backgroundColor: 'rgb(255,255,255)',
+      rotate: 35,
+      backgroundColor: 'accent',
     },
   };
   const centerVariants = {
@@ -39,8 +39,8 @@ const Navbar = () => {
       rotate: 0,
     },
     opened: {
-      rotate: -45,
-      backgroundColor: 'rgb(255,255,255)',
+      rotate: -35,
+      backgroundColor: 'accent',
     },
   };
 
@@ -67,76 +67,54 @@ const Navbar = () => {
       opacity: 1,
     },
   };
-
+  // sm:px-8 md:px-12 lg:px-20 xl:px-48
   return (
     <div
-      className="h-full  text-white flex items-center justify-center px-4 
-sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl"
+      className="h-full text-white flex items-center justify-items-start  px-4 
+
+text-xl"
     >
-      {/* LINKS */}
-      <div className="hidden md:flex gap-10">
-        {links.map((link) => (
-          <NavLink link={link} key={link.title} />
-        ))}
-      </div>
       {/* LOGO */}
-      {/* <div className="md:hidden lg:flex xl:w-1/3 xl:justify-center">
-        <Link
-          href="/"
-          className="text-sm bg-black rounded-md p-1 font-semibold flex items-center justify-center"
-        >
-          <span className="text-white mr-1">Lama</span>
-          <span className="w-12 h-8 rounded bg-white text-black flex items-center justify-center">
-            .dev
+      <div className="mr-auto">
+        <Link href="/" className="text-3xl p-1 font-semibold ">
+          <span className="bg-gradient-to-r from-[#b27f1f] via-[#fefe68] to-[#f3a80a] bg-clip-text text-transparent">
+            S.gurung
           </span>
         </Link>
-      </div> */}
-      {/* SOCIAL */}
-      {/* <div className="hidden md:flex gap-4 w-1/3">
-        <Link href="/">
-          <Image src="/github.png" alt="" width={24} height={24} />
-        </Link>
-        <Link href="/">
-          <Image src="/dribbble.png" alt="" width={24} height={24} />
-        </Link>
-        <Link href="/">
-          <Image src="/instagram.png" alt="" width={24} height={24} />
-        </Link>
-        <Link href="/">
-          <Image src="/facebook.png" alt="" width={24} height={24} />
-        </Link>
-        <Link href="/">
-          <Image src="/pinterest.png" alt="" width={24} height={24} />
-        </Link>
-        <Link href="/">
-          <Image src="/linkedin.png" alt="" width={24} height={24} />
-        </Link>
-      </div> */}
+      </div>
+      {/* LINKS */}
+      <div className="hidden md:flex gap-10 mr-auto">
+        {links.map((link) => (
+          <PrefetchingLink link={link} key={link.title} />
+        ))}
+      </div>
+      {/* <div className="md:hidden flex justify-around w-full"> */}
+
       {/* RESPONSIVE MENU */}
-      <div className="md:hidden">
+      <div className="md:hidden z-10">
         {/* MENU BUTTON */}
-        {/* <button
-          className="w-10 h-8 flex flex-col justify-between z-50 relative"
+        <button
+          className="w-10 flex flex-col gap-[6px] z-50 relative"
           onClick={() => setOpen((prev) => !prev)}
         >
           <motion.div
             variants={topVariants}
             animate={open ? 'opened' : 'closed'}
-            className="w-10 h-1 bg-black rounded origin-left"
+            className="w-8 h-[3px] bg-accent rounded origin-left"
           ></motion.div>
           <motion.div
             variants={centerVariants}
             animate={open ? 'opened' : 'closed'}
-            className="w-10 h-1 bg-black rounded"
+            className="w-8 h-[3px] bg-accent rounded"
           ></motion.div>
           <motion.div
             variants={bottomVariants}
             animate={open ? 'opened' : 'closed'}
-            className="w-10 h-1 bg-black rounded origin-left"
+            className="w-8 h-[3px] bg-accent rounded origin-left"
           ></motion.div>
-        </button> */}
+        </button>
         {/* MENU LIST */}
-        {/* {open && (
+        {open && (
           <motion.div
             variants={listVariants}
             initial="closed"
@@ -153,8 +131,9 @@ sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl"
               </motion.div>
             ))}
           </motion.div>
-        )} */}
+        )}
       </div>
+      {/* </div> */}
     </div>
   );
 };

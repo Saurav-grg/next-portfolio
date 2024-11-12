@@ -14,7 +14,9 @@ const Homepage = () => {
             <span className="text-xl">Full Stack Developer</span>
             <h1 className="mb-6">
               Hello I'm <br />
-              <span className="text-accent/80">Saurav Gurung</span>
+              <span className="bg-gradient-to-r from-[#f9f295] z-40 via-[#e0aa3e] via-[#faf398] to-[#b88a44] bg-clip-text text-transparent">
+                Saurav Gurung
+              </span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
               I excel at crafting digital experiences and I am proficient in

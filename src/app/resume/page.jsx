@@ -157,14 +157,17 @@ const AboutPage = () => {
           </div>
         </div>
         <p className="mb-2">Lorem ipsum dont have much to say right now.</p>
-        <div className="flex md:flex-col overflow-auto  gap-2">
+        <div className="flex md:flex-col gap-2">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-md transition-colors flex-1 ${
-                activeTab === tab.id ? 'bg-accent/80 ' : 'bg-accent/30 '
-              }`}
+              className={`px-4 py-2 text-black font-semibold rounded-md flex-1 bg-gradient-to-r from-[#707072]
+                 via-[#cdced2] via-[#fcfcfe] via-[#d0d1d6] via-[#818286] to-[#a1a1a3] ${
+                   activeTab === tab.id
+                     ? 'scale-105 transition-scale duration-500 '
+                     : ''
+                 }`}
             >
               {tab.title}
             </button>
