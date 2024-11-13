@@ -32,8 +32,11 @@ const EducationTab = () => {
     >
       <h3 className="text-2xl font-semibold mb-4">{education.title}</h3>
       <div className="flex flex-col pl-2 gap-4 ">
-        {education.educationList.map((item) => (
-          <div className=" bg-black/40 ring-1 ring-white/20 rounded-md p-4">
+        {education.educationList.map((item, i) => (
+          <div
+            key={i}
+            className=" bg-black/40 ring-1 ring-white/20 rounded-md p-4"
+          >
             <p className="text-accent/80 text-sm">{item.date}</p>
             <h4 className="text-lg font-semibold py-2">{item.title}</h4>
             <p className="text-white/70 text-sm  ">
@@ -80,8 +83,11 @@ const SkillsTab = () => {
     >
       <h3 className="text-2xl font-semibold mb-4">{skills.title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 pl-2 gap-4 ">
-        {skills.skillList.map((item) => (
-          <div className="text-6xl border border-accent/40  rounded-md p-4 flex items-center justify-center">
+        {skills.skillList.map((item, i) => (
+          <div
+            key={i}
+            className="text-6xl border border-accent/40  rounded-md p-4 flex items-center justify-center"
+          >
             {item.icon}
           </div>
         ))}
@@ -162,12 +168,11 @@ const AboutPage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 text-black font-semibold rounded-md flex-1 bg-gradient-to-r from-[#707072]
-                 via-[#cdced2] via-[#fcfcfe] via-[#d0d1d6] via-[#818286] to-[#a1a1a3] ${
-                   activeTab === tab.id
-                     ? 'scale-105 transition-scale duration-500 '
-                     : ''
-                 }`}
+              className={`px-4 py-2 text-black font-semibold rounded-md flex-1 bg-silver-light ${
+                activeTab === tab.id
+                  ? 'scale-105 transition-scale duration-500 '
+                  : null
+              }`}
             >
               {tab.title}
             </button>

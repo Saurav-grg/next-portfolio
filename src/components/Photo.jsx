@@ -17,7 +17,7 @@ export default function Photo() {
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            transition: { duration: 1, ease: 'easeInOut' },
+            transition: { duration: 0.4, ease: 'easeIn' },
           }}
           className="w-[298px] h-[298px] lg:w-[400px] lg:h-[400px] mix-blend-lighten"
         >
@@ -32,6 +32,9 @@ export default function Photo() {
         </motion.div>
         {/* circle */}
         <motion.svg
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', duration: 1.5, ease: 'easeIn' }}
           id="circle"
           className="w-[300px] lg:w-[408px] h-[300px] lg:h-[408px] absolute top-0 left-0"
           fill="transparent"

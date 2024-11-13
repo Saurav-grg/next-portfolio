@@ -1,12 +1,11 @@
 'use client';
-
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './navbar';
-import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
+// import { motion } from 'framer-motion';
+// import { usePathname } from 'next/navigation';
 
 const TransitionProvider = ({ children }) => {
-  const pathName = usePathname();
+  // const pathName = usePathname();
 
   return (
     <AnimatePresence mode="wait">
@@ -17,14 +16,8 @@ const TransitionProvider = ({ children }) => {
         >
           <div class="absolute left-0 -z-10 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div>
         </div>
-
-        {/* <div
-        key={pathName}
-        // className="w-screen h-screen bg-gradient-to-b from-blue-100 to-red-100"
-        className="w-screen h-screen bg-gradient-to-br from-slate-950 to-slate-900 "
-      > */}
         {/* <motion.div
-          className="h-screen w-screen fixed  rounded-b-[100px] z-40"
+          className="h-screen w-screen fixed rounded-b-[100px] z-40"
           animate={{ height: '0vh' }}
           exit={{ height: '140vh' }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -39,11 +32,11 @@ const TransitionProvider = ({ children }) => {
           {pathName.substring(1)}
         </motion.div>
         <motion.div
-          className="h-screen w-screen fixed bg-black rounded-t-[100px] bottom-0 z-30"
+          className="h-screen w-screen fixed rounded-t-[100px] bottom-0 z-30"
           initial={{ height: '140vh' }}
           animate={{ height: '0vh', transition: { delay: 0.5 } }}
         /> */}
-        <div className="h-24 z-10 sm:w-3/4 w-[95%] mx-auto">
+        <div className="h-20 z-10 sm:w-3/4 w-[95%] mx-auto">
           <Navbar />
         </div>
         <div className="h-[calc(100vh-6rem)]">{children}</div>

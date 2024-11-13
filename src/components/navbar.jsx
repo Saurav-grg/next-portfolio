@@ -1,21 +1,18 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-// import NavLink from './navLink';
-
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import PrefetchingLink from './prefetch';
-
-const links = [
-  { url: '/', title: 'Home' },
-  { url: '/resume', title: 'Resume' },
-  { url: '/portfolio', title: 'Portfolio' },
-  { url: '/contact', title: 'Contact' },
-];
-
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const links = [
+    { url: '/', title: 'Home' },
+    { url: '/resume', title: 'Resume' },
+    { url: '/portfolio', title: 'Portfolio' },
+    { url: '/contact', title: 'Contact' },
+  ];
 
+  const [open, setOpen] = useState(false);
+  const pathName = usePathname();
   const topVariants = {
     closed: {
       rotate: 0,
@@ -70,7 +67,7 @@ const Navbar = () => {
   // sm:px-8 md:px-12 lg:px-20 xl:px-48
   return (
     <div
-      className="h-full text-white flex items-center justify-items-start  px-4 
+      className="h-full flex items-center justify-items-start  px-4 
 
 text-xl"
     >
@@ -78,14 +75,22 @@ text-xl"
       <div className="mr-auto">
         <Link href="/" className="text-3xl p-1 font-semibold ">
           <span className="bg-gradient-to-r from-[#b27f1f] via-[#fefe68] to-[#f3a80a] bg-clip-text text-transparent">
-            S.gurung
+            S.Gurung
           </span>
         </Link>
       </div>
       {/* LINKS */}
       <div className="hidden md:flex gap-10 mr-auto">
         {links.map((link) => (
-          <PrefetchingLink link={link} key={link.title} />
+          <Link
+            key={link.title}
+            className={`rounded p-1 font-semibold  bg-clip-text text-transparent ${
+              pathName === link.url ? 'bg-gold-sharp' : 'bg-silver-light'
+            }`}
+            href={link.url}
+          >
+            {link.title}
+          </Link>
         ))}
       </div>
       {/* <div className="md:hidden flex justify-around w-full"> */}
