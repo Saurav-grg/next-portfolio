@@ -1,7 +1,7 @@
-'use client';
-import Socials from '@/components/Socials';
-import Photo from '@/components/Photo';
-import { motion } from 'framer-motion';
+"use client";
+import Socials from "@/components/Socials";
+import Photo from "@/components/Photo";
+import { motion } from "framer-motion";
 const Homepage = () => {
   return (
     <div className="h-full w-3/4 mx-auto">
@@ -11,7 +11,7 @@ const Homepage = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ type: 'spring' }}
+            transition={{ type: "spring" }}
             className="text-center lg-text-left order-2 lg:order-none"
           >
             <span className="text-xl">Full Stack Developer</span>
@@ -27,9 +27,11 @@ const Homepage = () => {
             </p>
             {/* buttons and socials */}
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 ">
-              <button className="border border-accent/80 p-1 px-4 rounded-full text-accent hover:bg-accent/80 hover:text-white transition-all duration-300">
-                Download CV
-              </button>
+              <a href="/res-hard.pdf" download="saurav-cv.pdf">
+                <button className="border border-accent/80 p-1 px-4 rounded-full text-accent hover:bg-accent/80 hover:text-white transition-all duration-300">
+                  Download CV
+                </button>
+              </a>
               <div className="mb-8 lg:mb-0">
                 <Socials />
               </div>

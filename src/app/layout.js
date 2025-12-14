@@ -1,12 +1,9 @@
 // import { Inter } from 'next/font/google';
-import './globals.css';
-import TransitionProvider from '@/components/transitionProvider';
-
-// const inter = Inter({ subsets: ['latin'] });
-
+import "./globals.css";
+import TransitionProvider from "@/components/transitionProvider";
 export const metadata = {
-  title: 'Saurav Gurung',
-  description: 'The best portfolio page',
+  title: "Saurav Gurung",
+  description: "The best portfolio page",
 };
 
 export default function RootLayout({ children }) {

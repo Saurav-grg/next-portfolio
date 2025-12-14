@@ -1,30 +1,39 @@
-'use client';
-
-// import { useState } from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-// import { IoLayersOutline } from 'react-icons/io5';
-
+"use client";
+import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 const projects = [
   {
-    title: 'Blog CRUD Application',
+    title: "AI chatbot",
     description:
-      'A dynamic blogging platform built with the MERN stack, enabling user to create, edit, and delete blog posts seamlessly. With Firebase-hosted images and rich text styling powered by ReactQuill, the app provides an engaging writing experience.',
-    image: '/imgdem.jpg',
-    tags: ['React.js', 'MongoDB', 'Express.js', 'Tailwind CSS', 'Firebase'],
-    liveUrl: 'https://zenith-quest.vercel.app',
-    githubUrl: 'https://github.com/Saurav-grg/Blog-app-MERN',
+      "A powerful multi-model AI chat application with support for Gemini, Mistral, Groq and more",
+    // "A dynamic blogging platform built with the MERN stack, enabling user to create, edit, and delete blog posts seamlessly. With Firebase-hosted images and rich text styling powered by ReactQuill, the app provides an engaging writing experience.",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/zenithquest-5baea.appspot.com/o/chat-meta.png?alt=media&token=46ea391e-e4e9-401b-ab6b-322c340b06aa",
+    tags: ["Next.js", "PostgreSQL", "React-Query", "Tailwind CSS", "OpenAI"],
+    liveUrl: "https://chat-cablex.vercel.app",
+    githubUrl: "https://github.com/Saurav-grg/chatbot",
     featured: true,
   },
   {
-    title: 'Recipe Search/Discover ',
+    title: "Blog CRUD Application",
     description:
-      'A recipe discovery app leveraging a public recipe database API to help users find meal ideas by filtering recipes based on dietary needs and health considerations. The app includes a search bar with multiselect filtering options for smooth user experience and quick access to tailored recipes.',
-    image: '/imgdem.jpg',
-    tags: ['React js', 'Edamam API', 'Tailwind CSS'],
-    liveUrl: 'https://picky-eater.onrender.com',
-    githubUrl: 'https://github.com/Saurav-grg/Recipe-APP-Reactjs',
+      "A dynamic blogging platform built with the MERN stack, enabling user to create, edit, and delete blog posts seamlessly. With Firebase-hosted images and rich text styling powered by ReactQuill, the app provides an engaging writing experience.",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/zenithquest-5baea.appspot.com/o/blogmeta.png?alt=media&token=1565e49c-a79b-430e-b86f-a6de020f17b9",
+    tags: ["React.js", "MongoDB", "Express.js", "Tailwind CSS", "Firebase"],
+    liveUrl: "https://zenith-quest.vercel.app",
+    githubUrl: "https://github.com/Saurav-grg/Blog-app-MERN",
+    featured: true,
+  },
+  {
+    title: "Recipe Search/Discover ",
+    description:
+      "A recipe discovery app leveraging a public recipe database API to help users find meal ideas by filtering recipes based on dietary needs and health considerations. The app includes a search bar with multiselect filtering options for smooth user experience and quick access to tailored recipes.",
+    image:
+      "https://firebasestorage.googleapis.com/v0/b/zenithquest-5baea.appspot.com/o/eatermeta.png?alt=media&token=fd3eef79-13b0-43d2-ba0f-9a1a3c9b2b55",
+    tags: ["React js", "Edamam API", "Tailwind CSS"],
+    liveUrl: "https://picky-eater.onrender.com",
+    githubUrl: "https://github.com/Saurav-grg/Recipe-APP-Reactjs",
     featured: true,
   },
   // {
@@ -79,11 +88,11 @@ export default function ProjectsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`group flex flex-col gap-8 lg:items-start items-center ${
-                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
               }`}
             >
-              <div className="relative aspect-[16/9] w-full lg:w-3/5 rounded-xl overflow-hidden">
-                <Image
+              <div className="relative aspect-[16/9] w-full lg:w-3/5 rounded-xl overflow-hidden border-2 border-accent">
+                <img
                   src={project.image}
                   alt={project.title}
                   fill
@@ -122,7 +131,7 @@ export default function ProjectsPage() {
 
               <div className="space-y-6 lg:w-2/5">
                 <div className="flex items-center gap-4">
-                  <h2 className="text-3xl font-bold tracking-tight">
+                  <h2 className="text-3xl font-bold tracking-tight bg-silver-light text-transparent bg-clip-text">
                     {project.title}
                   </h2>
                   {/* {project.featured && (
